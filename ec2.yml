@@ -1,0 +1,19 @@
+---
+  - name: Provision an EC2 Instance
+    hosts: localhost
+    connection: local
+    gather_facts: False
+    tags: provisioning
+    tasks:
+        
+    - name: creting ec2
+      ec2:
+        key_name: new
+        instance_type: t2.micro
+        region: us-east-2
+        image: ami-0dacb0c129b49f529
+        wait: yes
+        group: all
+        count: 1
+        vpc_subnet_id: subnet-7b917410
+        assign_public_ip: yes
